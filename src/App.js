@@ -10,6 +10,7 @@ export default class App extends React.Component {
 
         this.removeAllOptions = this.removeAllOptions.bind(this);
         this.addAnOption = this.addAnOption.bind(this);
+        this.deleteAnOption = this.deleteAnOption.bind(this);
         this.state = { 
             app_name: "To-Do App",
             app_description: "A simple organizer and planer",
@@ -20,6 +21,8 @@ export default class App extends React.Component {
         if (this.state.options.length != 0) 
             this.setState({options: []});
     }
+
+
 
     addAnOption(e) {
         e.preventDefault();
@@ -39,12 +42,22 @@ export default class App extends React.Component {
         }
     }
 
+    deleteAnOption(opt) {
+        let helperOptionsArray = this.state.options;
+        helperOptionsArray = helperOptionsArray.filter((option) => {
+            if (option != opt)
+                return option;
+        })
+
+        this.setState({options: helperOptionsArray});
+    }
+
     render() {
         return (
             <div>
                 <Header name = {this.state.app_name} desc={this.state.app_description}/>
                 <OptionButtons options={this.state.options} removeAllOptions={this.removeAllOptions} />
-                <Options options={this.state.options} />
+                <Options options={this.state.options} deleteAnOption={this.deleteAnOption}/>
                 <AddOption addAnOption={this.addAnOption}/>
             </div>
         );

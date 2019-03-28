@@ -1,0 +1,33 @@
+{
+  "name": "todo-app",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "serve": "live-server public/",
+    "start": "webpack --mode development --watch"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Ogisha/simple-todo.git"
+  },
+  "author": "Ognjen Pandurevic",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Ogisha/simple-todo/issues"
+  },
+  "homepage": "https://github.com/Ogisha/simple-todo#readme",
+  "dependencies": {
+    "@babel/core": "^7.4.0",
+    "babel-cli": "^6.26.0",
+    "babel-loader": "^7.1.5",
+    "babel-preset-env": "^1.7.0",
+    "babel-preset-react": "^6.24.1",
+    "live-server": "^1.2.1",
+    "react": "^16.8.6",
+    "react-dom": "^16.8.6",
+    "validator": "^10.11.0",
+    "webpack": "^4.29.6",
+    "webpack-cli": "^3.3.0"
+  }
+}

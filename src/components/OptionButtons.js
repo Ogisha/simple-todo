@@ -4,7 +4,9 @@ const OptionButtons = (props) => {
     const showRandomOption = () => {
         let index = Math.floor(Math.random() * props.options.length);
         let message = `What you really should do is '${props.options[index]}'!`;
-        alert(message);
+
+        props.catchMessage(message);
+        props.openModal();
     }
 
     const isBtnAvailable = () => {

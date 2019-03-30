@@ -1,7 +1,6 @@
 import React from 'react';
 
-const AddOption = (props) => {
-    return (
+const AddOption = (props) => (
         <div>
             <form onSubmit={props.addAnOption}>
                 <input type="text" name="option" />
@@ -9,7 +8,6 @@ const AddOption = (props) => {
             </form>
         </div>
     );
-}
 
 export default AddOption;
 

@@ -5,32 +5,18 @@ import Options from './components/Options'
 import AddOption from './components/AddOption';
 
 export default class App extends React.Component {
-    constructor(props) {
-        super(props);
+    state = { 
+        app_name: "To-Do App",
+        app_description: "A simple organizer and planer",
+        options: ["Practise coding", "Have some healty breakfast"]
+    };
 
-        this.removeAllOptions = this.removeAllOptions.bind(this);
-        this.addAnOption = this.addAnOption.bind(this);
-        this.handleDeleteOption = this.handleDeleteOption.bind(this);
-        this.state = { 
-            app_name: "To-Do App",
-            app_description: "A simple organizer and planer",
-            options: ["Practise coding", "Have some healty breakfast"]};
-    }
-
-    componentDidMount() {
-        console.log("componentDidMount");
-    }
-
-    componentDidUpdate(prevProps, prevState) {
-        console.log("componentDidUpdate");
-    }
-
-    removeAllOptions() {
+    removeAllOptions = () => {
         if (this.state.options.length != 0) 
             this.setState(() => ({ options: [] }))
     }
 
-    addAnOption(e) {
+    addAnOption = (e) => {
         e.preventDefault();
 
         if (e.target.option.value != '') {
@@ -47,7 +33,7 @@ export default class App extends React.Component {
         }
     }
 
-    handleDeleteOption(el) {
+    handleDeleteOption = (el) => {
         let helperElArray = el.split("<button>");
         let optionToDelete = helperElArray[0];
         this.setState((prevState) => ({
@@ -56,6 +42,20 @@ export default class App extends React.Component {
                     return true;
             })
         }))
+    }
+
+    componentDidMount() {
+        let data = JSON.parse(localStorage.getItem("options"));
+        console.log(data)
+        this.setState(() => ({
+            options: data
+        }))
+    }
+
+    componentDidUpdate(prevProps, prevState) {
+        let data = JSON.stringify(this.state.options);
+        
+        localStorage.setItem("options", data);
     }
 
     render() {
